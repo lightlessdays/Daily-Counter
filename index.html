@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Questions Counter</title>
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.counter-container {
+    text-align: center;
+}
+
+#counter {
+    font-size: 15em;
+    margin: 0;
+}
+
+button {
+    font-size: 1.5em;
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #494a49;
+}
+
+    </style>
+</head>
+<body>
+    <div class="counter-container">
+        <h1 id="counter">0</h1>
+        <button id="incrementBtn">+</button>
+        <button id="resetBtn">Reset</button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    // Check if counter value exists in local storage
+    let counterValue = localStorage.getItem('counterValue') || 0;
+
+    // Display initial counter value
+    document.getElementById('counter').textContent = counterValue;
+
+    // Increment button click event
+    document.getElementById('incrementBtn').addEventListener('click', function () {
+        counterValue++;
+        updateCounter(counterValue);
+    });
+
+    // Reset button click event
+    document.getElementById('resetBtn').addEventListener('click', function () {
+        counterValue = 0;
+        updateCounter(counterValue);
+    });
+
+    // Function to update counter value and store it in local storage
+    function updateCounter(value) {
+        document.getElementById('counter').textContent = value;
+        localStorage.setItem('counterValue', value);
+    }
+});
+
+    </script>
+</body>
+</html>
